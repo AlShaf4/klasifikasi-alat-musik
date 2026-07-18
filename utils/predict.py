@@ -14,10 +14,10 @@ from utils.labels import CLASS_NAMES
 from utils.preprocessing import load_and_preprocess_image
 
 print("Loading model MobileNetV2...")
-mobilenet_model = load_model("models/mobilenetv2_instruments.h5")
+mobilenet_model = load_model("models/mobilenetv2_instruments")
 
 print("Loading model EfficientNetB0...")
-efficientnet_model = load_model("models/efficientnetb0_instruments.h5")
+efficientnet_model = load_model("models/efficientnetb0_instruments")
 
 print("Kedua model berhasil dimuat.")
 
