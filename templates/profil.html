@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Profil  Klasifikasi Alat Musik</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="logo">InstrumentAI</div>
+    <ul>
+      <li><a href="/">Beranda</a></li>
+      <li><a href="/dataset">Dataset</a></li>
+      <li><a href="/about">Metodologi</a></li>
+      <li><a href="/profil" class="active">Profil</a></li>
+    </ul>
+  </nav>
+
+  <div class="container">
+    <div class="hero">
+      <h1>Profil Proyek</h1>
+    </div>
+
+    <div class="card profile-card">
+      <div class="profile-avatar">AI</div>
+      <dl class="profile-detail">
+        <dt>Nama</dt>
+        <dd>Selsa Shafana Alfiyani</dd>
+        <dt>NIM</dt>
+        <dd>301240041 </dd>
+        <dt>Kelas</dt>
+        <dd>4B</dd>
+        <dt>Mata Kuliah</dt>
+        <dd>Kecerdasan Buatan</dd>
+      </dl>
+    </div>
+
+    <div class="card">
+      <div class="section-title">Tentang Proyek</div>
+      <p class="muted">
+        Capstone project individu ini mengimplementasikan dan membandingkan dua arsitektur transfer learning (MobileNetV2 dan EfficientNetB0) untuk klasifikasi gambar 30 jenis alat musik, dideploy sebagai aplikasi web menggunakan Flask.
+      </p>
+      <div class="link-buttons">
+        <a href="#" class="btn">Repository GitHub</a>
+        <a href="#" class="btn" style="background:linear-gradient(90deg, var(--accent-secondary), #16a394);">Video Demo YouTube</a>
+      </div>
+
+  </div>
+
+  <footer>
+    Capstone Project  Mata Kuliah Kecerdasan Buatan | Computer Vision
+  </footer>
+
+</body>
+</html>

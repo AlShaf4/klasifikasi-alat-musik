@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Metodologi  Klasifikasi Alat Musik</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="logo">InstrumentAI</div>
+    <ul>
+      <li><a href="/">Beranda</a></li>
+      <li><a href="/dataset">Dataset</a></li>
+      <li><a href="/about" class="active">Metodologi</a></li>
+      <li><a href="/profil">Profil</a></li>
+    </ul>
+  </nav>
+
+  <div class="container">
+    <div class="hero">
+      <h1>Metodologi & Perbandingan Model</h1>
+    </div>
+
+    <div class="card">
+      <div class="section-title">Alur Sistem</div>
+      <p class="muted">
+        Dataset &rarr; Preprocessing & Augmentasi &rarr; Transfer Learning (freeze base model) &rarr; Fine-tuning (unfreeze sebagian layer) &rarr; Evaluasi (confusion matrix & classification report) &rarr; Deployment sebagai aplikasi web Flask
+      </p>
+    </div>
+
+    <div class="card">
+      <div class="section-title">Perbandingan Arsitektur</div>
+      <table class="compare-table">
+        <tr>
+          <th>Aspek</th>
+          <th>MobileNetV2</th>
+          <th>EfficientNetB0</th>
+        </tr>
+        <tr>
+          <td>Akurasi Test Set</td>
+          <td>98%</td>
+          <td>100%</td>
+        </tr>
+        <tr>
+          <td>Ukuran Model</td>
+          <td>Lebih ringan</td>
+          <td>Sedikit lebih besar</td>
+        </tr>
+        <tr>
+          <td>Karakteristik</td>
+          <td>Cepat, cocok untuk perangkat terbatas</td>
+          <td>Lebih akurat, cocok saat resource lebih leluasa</td>
+        </tr>
+      </table>
+      <p class="muted" style="margin-top:1rem;">
+        Catatan: angka akurasi di atas dihitung dari 150 gambar test set (5 gambar per kelas), sehingga hasil tinggi ini perlu dibaca dengan hati-hati  jumlah sampel kecil bisa membuat angka akurasi tidak sepenuhnya mencerminkan performa pada data dunia nyata yang lebih beragam.
+      </p>
+    </div>
+
+    <div class="card">
+      <div class="section-title">Grafik Training</div>
+      <img src="{{ url_for('static', filename='images/results/mobilenetv2_training_history.png') }}" style="width:100%;border-radius:12px;margin-top:1rem;">
+      <img src="{{ url_for('static', filename='images/results/efficientnetb0_training_history.png') }}" style="width:100%;border-radius:12px;margin-top:1rem;">
+    </div>
+
+    <div class="card">
+      <div class="section-title">Confusion Matrix</div>
+      <img src="{{ url_for('static', filename='images/results/mobilenetv2_confusion_matrix.png') }}" style="width:100%;border-radius:12px;margin-top:1rem;">
+      <img src="{{ url_for('static', filename='images/results/efficientnetb0_confusion_matrix.png') }}" style="width:100%;border-radius:12px;margin-top:1rem;">
+    </div>
+
+    <div class="card">
+      <div class="section-title">Istilah Penting</div>
+      <dl>
+        <div class="glossary-item">
+          <dt>Confidence Score</dt>
+          <dd>Tingkat keyakinan model terhadap prediksinya, dalam bentuk persentase. Semakin tinggi, semakin yakin model dengan jawabannya.</dd>
+        </div>
+        <div class="glossary-item">
+          <dt>Confusion Matrix</dt>
+          <dd>Tabel yang menunjukkan seberapa sering model salah menebak antar kelas  membantu melihat kelas mana yang sering tertukar.</dd>
+        </div>
+        <div class="glossary-item">
+          <dt>Precision</dt>
+          <dd>Dari semua prediksi yang model bilang "kelas X", berapa persen yang benar-benar kelas X.</dd>
+        </div>
+        <div class="glossary-item">
+          <dt>Recall</dt>
+          <dd>Dari semua gambar yang sebenarnya kelas X, berapa persen yang berhasil dikenali model sebagai kelas X.</dd>
+        </div>
+        <div class="glossary-item">
+          <dt>F1-Score</dt>
+          <dd>Nilai gabungan antara precision dan recall, dipakai untuk melihat performa model secara seimbang.</dd>
+        </div>
+      </dl>
+    </div>
+
+    <div class="card">
+      <div class="section-title">Pertanyaan Umum (FAQ)</div>
+
+      <div class="faq-item">
+        <div class="faq-question"><span>Kenapa hasil klasifikasi kadang salah?</span><span class="icon">+</span></div>
+        <div class="faq-answer">Model dilatih pada gambar dengan latar belakang bersih dan pencahayaan konsisten. Foto dengan kondisi berbeda (background ramai, sudut tidak biasa, atau alat musik yang bentuknya mirip kelas lain) bisa membuat model salah menebak.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question"><span>Kenapa membandingkan dua arsitektur berbeda?</span><span class="icon">+</span></div>
+        <div class="faq-answer">Untuk melihat trade-off antara kecepatan dan akurasi. MobileNetV2 dirancang ringan dan cepat, sementara EfficientNetB0 mengutamakan efisiensi skala model untuk akurasi lebih tinggi.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question"><span>Apakah model ini bisa dipakai untuk foto alat musik apa saja?</span><span class="icon">+</span></div>
+        <div class="faq-answer">Model hanya mengenali 30 jenis alat musik yang ada dalam dataset training. Alat musik di luar 30 kelas tersebut tetap akan diklasifikasikan ke salah satu dari 30 kelas yang paling mirip, meski sebenarnya salah.</div>
+      </div>
+    </div>
+
+  </div>
+
+  <footer>
+    Capstone Project  Mata Kuliah Kecerdasan Buatan | Computer Vision
+  </footer>
+
+  <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>

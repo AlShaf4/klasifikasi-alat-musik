@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dataset  Klasifikasi Alat Musik</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="logo">InstrumentAI</div>
+    <ul>
+      <li><a href="/">Beranda</a></li>
+      <li><a href="/dataset" class="active">Dataset</a></li>
+      <li><a href="/about">Metodologi</a></li>
+      <li><a href="/profil">Profil</a></li>
+    </ul>
+  </nav>
+
+  <div class="container">
+    <div class="hero">
+      <h1>Tentang Dataset</h1>
+      <p>Dataset "30 Musical Instruments" dari Kaggle, berisi {{ total_classes }} kategori alat musik dari berbagai kategori: tiup, senar, dan perkusi.</p>
+    </div>
+
+    <div class="card">
+      <div class="section-title">Informasi Dataset</div>
+      <dl>
+        <div class="glossary-item">
+          <dt>Sumber</dt>
+          <dd>Kaggle  30 Musical Instruments Image Classification (gpiosenka)</dd>
+        </div>
+        <div class="glossary-item">
+          <dt>Jumlah Gambar</dt>
+          <dd>4.793 gambar training, ±150 gambar validasi, ±150 gambar test</dd>
+        </div>
+        <div class="glossary-item">
+          <dt>Format</dt>
+          <dd>JPG, resolusi 224x224 piksel, RGB</dd>
+        </div>
+        <div class="glossary-item">
+          <dt>Augmentasi Data</dt>
+          <dd>Random flip horizontal, rotasi ±15°, zoom ±15%, dan penyesuaian kontras  diterapkan hanya pada data training untuk membuat model lebih tahan terhadap variasi gambar di dunia nyata.</dd>
+        </div>
+      </dl>
+    </div>
+
+    <div class="card">
+      <div class="section-title">Daftar {{ total_classes }} Kelas Alat Musik</div>
+      <div class="gallery">
+        {% for c in classes %}
+        <div class="gallery-item">
+          <img src="{{ url_for('static', filename='images/samples/' + c.name + '.jpg') }}" alt="{{ c.name }}">
+          {{ c.name }}
+          <div class="cat">{{ c.kategori }}</div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+
+  </div>
+
+  <footer>
+    Capstone Project  Mata Kuliah Kecerdasan Buatan | Computer Vision
+  </footer>
+
+</body>
+</html>
